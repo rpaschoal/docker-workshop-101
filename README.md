@@ -28,5 +28,25 @@ Before we move on to creating our container image it is important that every rea
 
 Windows is planning on shipping a Linux dist with Windows 10 which should make things smoother and better for those running Docker on Windows ❤️
 
+## Building your own image
 
+Within the root directory where you cloned this repository, run the following set of commands:
+
+```
+cd aspnetapp
+docker build --pull -t aspnetapp .
+docker run --name aspnetcore_sample --rm -it -p 8000:80 aspnetapp
+```
+
+You should see the following console output as the application starts:
+
+```
+C:\git\dotnet-docker\samples\aspnetapp>docker run --name aspnetcore_sample --rm -it -p 8000:80 aspnetapp
+Hosting environment: Production
+Content root path: /app
+Now listening on: http://[::]:80
+Application started. Press Ctrl+C to shut down.
+```
+
+After the application starts, navigate to http://localhost:8000 in your web browser. You should now see the ASPNET sample application response.
 
