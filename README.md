@@ -77,3 +77,7 @@ https://docs.microsoft.com/en-us/azure/app-service/containers/tutorial-custom-do
 ## Docker Compose and container orchestration
 
 There is a docker-compose yaml file on this project that runs and build the `aspnet` image and starts up a SQL server container. They don't talk to each other on the application level for brevity of this workshop but they are network connected and enabled! Check it out by running `docker-compose up` on the root of your cloned repository! 🚀
+
+## Samples
+
+You can find more samples on this repository: https://github.com/dotnet/dotnet-docker
