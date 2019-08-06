@@ -24,6 +24,8 @@ On top of the software listed above you'll also need an Azure account with a val
 
 To install Docker on Windows, please follow this link [Docker For Windows](https://docs.docker.com/docker-for-windows/)
 
+_Note: Create a new resource group on azure for this workshop so it is easier to remove all the necessary resources once you've finished with them as they cost some $._
+
 ## Docker basic and useful commands
 
 Before we move on to creating our container image it is important that every reader that is following through this workshop to understand the basic commands and concepts behind Docker. I've written an article in the past that should be a good starting point to understand the reasonings, foundations and basic/curated list of commands for Docker. Please take a time to read it: [How to get started with Docker on Windows](https://www.scalablepath.com/blog/get-started-docker-windows/)
@@ -68,3 +70,10 @@ Once you have created it, lets push our locally built `aspnet` image to it by ru
 
 And that's it, now if you go to your Azure portal and find your container registry instance you should see your image there! 🎉
 
+## Running your container on the Cloud
+
+https://docs.microsoft.com/en-us/azure/app-service/containers/tutorial-custom-docker-image
+
+## Docker Compose and container orchestration
+
+There is a docker-compose yaml file on this project that runs and build the `aspnet` image and starts up a SQL server container. They don't talk to each other on the application level for brevity of this workshop but they are network connected and enabled! Check it out by running `docker-compose up` on the root of your cloned repository! 🚀
