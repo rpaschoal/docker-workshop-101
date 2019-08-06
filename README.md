@@ -8,6 +8,7 @@ This repository contains the technical material for a Docker 101 Workshop.
 * Docker basic and useful commands
 * Building your own image
 * DockerHub and Private Repositories
+* Running your container on the Cloud
 * Docker Compose and container orchestration
 
 ## Pre-requisites
@@ -16,6 +17,7 @@ This workshop assume you have the following software installed on your machine:
 
 * Docker Daemon or simply _Docker_
 * .NET Core 2.2+ SDK
+* [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
 * A code editor such as Visual Studio, VS Code. Visual Studio is _not required_ but might be referenced or handy throughout this workshop
 
 On top of the software listed above you'll also need an Azure account with a valid subscription to create a private Azure Container Registry.
@@ -49,4 +51,20 @@ Application started. Press Ctrl+C to shut down.
 ```
 
 After the application starts, navigate to http://localhost:8000 in your web browser. You should now see the ASPNET sample application response.
+
+_Inspect the Dockerfile file on the root of your repository. See the build steps on this file. This is how we instruct the Docker daemon on how to build our custom images._
+
+## DockerHub and Private Repositories
+
+[Docker Hub](https://hub.docker.com/) is the official repository from Docker and it has support for public and private repositories. Most base images are retrieved from there and published by the companies maintaining it such as Microsoft, Node, etc.
+
+For this workshop we'll be using a private container registry in Azure. Follow these instructions on how to create a Azure Container Registry instance: [Quickstart: Create a private container registry using the Azure portal](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal)
+
+Once you have created it, lets push our locally built `aspnet` image to it by running the following CLI commands:
+
+* `az acr login --name myregistry` _This command will sign in your local Docker daemon with your Azure Container Registry_
+* `docker aspnetapp nginx myregistry.azurecr.io/aspnetapp` _This will tag your image with the container registry URL_
+* `docker push myregistry.azurecr.io/aspnetapp` _This will push your image to the container registry_
+
+And that's it, now if you go to your Azure portal and find your container registry instance you should see your image there! 🎉
 
