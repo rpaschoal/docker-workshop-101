@@ -65,7 +65,7 @@ For this workshop we'll be using a private container registry in Azure. Follow t
 Once you have created it, lets push our locally built `aspnet` image to it by running the following CLI commands:
 
 * `az acr login --name myregistry` _This command will sign in your local Docker daemon with your Azure Container Registry_
-* `docker aspnetapp nginx myregistry.azurecr.io/aspnetapp` _This will tag your image with the container registry URL_
+* `docker tag aspnetapp myregistry.azurecr.io/aspnetapp` _This will tag your image with the container registry URL_
 * `docker push myregistry.azurecr.io/aspnetapp` _This will push your image to the container registry_
 
 And that's it, now if you go to your Azure portal and find your container registry instance you should see your image there! 🎉
